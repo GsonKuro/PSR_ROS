@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from psr_aula8_ex4.msg import Dog
 import argparse
 import rospy
 from std_msgs.msg import String
@@ -25,7 +26,14 @@ def main():
 
     rate = rospy.Rate(args['frequency'])
     while not rospy.is_shutdown():
-        message_to_send = args['content']
+
+        # construct the message to send
+        message_to_send = Dog()
+        message_to_send = 'Nono'
+        message_to_send = 'Black'
+        message_to_send = 9
+        message_to_send.brothers.append('Bobi')
+        message_to_send.brothers.append('Lassie')
 
         rospy.loginfo(message_to_send)
         pub.publish(message_to_send)
